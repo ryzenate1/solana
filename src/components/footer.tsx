@@ -1,0 +1,6 @@
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { Wordmark } from './header';
+import { Button } from './ui/button';
+export function Closing() { return <section className="closing section-shell"><div className="eyebrow"><span className="status-dot"/>A NEW CHAPTER</div><h2>The future begins<br/>on your roof<span className="accent">.</span></h2><div className="closing-bottom"><p>Let’s design an energy solution<br/>that belongs to your property.</p><div className="cta-row"><Button asChild><Link href="/contact">Start your solar journey <ArrowUpRight size={18}/></Link></Button><Link className="text-link" href="/contact">Speak to our team <ArrowUpRight size={16}/></Link></div></div></section>; }
+export function Footer() { return <footer className="site-footer section-shell"><div className="footer-top"><Link href="/" aria-label="Universal Solar home"><Wordmark/></Link><span className="mono">ENERGY, CONSIDERED.</span><nav aria-label="Footer"><Link href="/solutions">Solutions</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Universal Solar</span><span>Designed with intention. Powered by the sun.</span><Link href="/privacy">Privacy</Link></div></footer>; }

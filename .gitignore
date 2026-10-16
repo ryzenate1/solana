@@ -1,0 +1,12 @@
+.DS_Store
+.tools/
+# Archival PNGs stay local, outside Next.js public/ and deployment artifacts.
+/assets/sequence-masters/
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+playwright-report/

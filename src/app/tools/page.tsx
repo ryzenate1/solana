@@ -1,0 +1,4 @@
+import { PageIntro } from '@/components/page-intro';
+import { SolarStudio } from '@/components/solar-studio';
+export const metadata = { title: 'Solar Intelligence Studio', description: 'Explore rooftop feasibility, solar savings, business ROI, bill analysis and storage scenarios with transparent assumptions.' };
+export default async function Tools({ searchParams }: { searchParams: Promise<{mode?: string}> }) { const { mode } = await searchParams; return <main id="main-content"><PageIntro label="SOLAR INTELLIGENCE / PLAN WITH CLARITY" title={<>Your solar potential.<br/>Made understandable.</>} text="Explore the roof, the energy and the investment. Change the assumptions, compare the possibilities, then take an informed next step."/><section className="section-shell studio-page"><SolarStudio initialTool={mode}/></section></main>; }

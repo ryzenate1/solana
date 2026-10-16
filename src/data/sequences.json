@@ -1,0 +1,15 @@
+[
+  {
+    "id": "scene-01",
+    "width": 1920,
+    "height": 1080,
+    "frameCount": 192,
+    "firstFrame": 1,
+    "lastFrame": 18,
+    "basePath": "/sequences/scene-01/",
+    "pattern": "frame_%06d.webp",
+    "poster": "/sequences/scene-01/frame_000001.webp",
+    "fit": "contain",
+    "review": "Opening study selected. Later footage contains distorted geometry and baked-in garbled labels; all original assets retained."
+  }
+]

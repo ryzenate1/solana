@@ -1,0 +1,15 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { ArrowUpRight, Check, Plus } from 'lucide-react';
+import { PageIntro } from '@/components/page-intro';
+import { SystemDiagram } from '@/components/system-diagram';
+import { Closing } from '@/components/footer';
+import { solutionGuides, type SolutionSlug } from '@/lib/solution-guides';
+function guide(slug: string) { return Object.prototype.hasOwnProperty.call(solutionGuides, slug) ? solutionGuides[slug as SolutionSlug] : null; }
+export function generateStaticParams() { return Object.keys(solutionGuides).map(slug => ({ slug })); }
+export async function generateMetadata({ params }: { params: Promise<{slug: string}> }): Promise<Metadata> { const item = guide((await params).slug); return { title: item?.label ?? 'Solution not found', description: item?.description }; }
+export default async function SolutionPage({ params }: { params: Promise<{slug: string}> }) {
+  const { slug } = await params, item = guide(slug); if (!item) notFound();
+  return <main id="main-content"><PageIntro label={item.label} title={item.title} text={item.description}/><section className="section-shell solution-guide-intro"><div><span className="mono accent">A CLEAR FIRST STEP</span><h2>Start with<br/>your potential.</h2><p>Explore an indicative scenario, then request a site-specific assessment. Keep generation, savings and initial cost in view together.</p><div className="cta-row"><Link className="button button-solid" href={`/tools?mode=${item.mode}`}>Explore {slug === 'commercial' ? 'business ROI' : 'home savings'} <ArrowUpRight size={16}/></Link><Link className="text-link" href={`/contact?property=${item.property}&service=survey`}>Request a site survey <ArrowUpRight size={16}/></Link></div></div><SystemDiagram variant={slug as SolutionSlug}/></section><section className="section-shell section-pad"><div className="section-kicker"><span className="mono">WHAT SHAPES YOUR SYSTEM</span><Plus size={16}/></div><div className="growth-links">{item.considerations.map(([title,text], i) => <div key={title}><span className="mono accent">0{i+1} / CONSIDER</span><h3>{title}</h3><p>{text}</p></div>)}</div></section><section className="section-shell assessment-prep"><div><span className="mono accent">PREPARE FOR THE CONVERSATION</span><h2>A little context.<br/>A better assessment.</h2></div><div><p>Share what you have. Missing information can be identified during the assessment.</p><ul className="check-list">{item.documents.map(x => <li key={x}><Check size={16}/>{x}</li>)}</ul><Link className="text-link" href={`/contact?property=${item.property}`}>Discuss your property <ArrowUpRight size={16}/></Link></div></section><section className="section-shell section-pad"><div className="split-heading"><h2>Before you begin.</h2><Link className="text-link" href="/knowledge">More practical guidance <ArrowUpRight size={16}/></Link></div><div className="faq-list">{item.faqs.map(([q,a]) => <details className="system-detail" key={q}><summary>{q}<Plus size={16}/></summary><p>{a}</p></details>)}</div></section><Closing/></main>;
+}

@@ -1,0 +1,7 @@
+assets/sequence-masters/
+assets/sequence-reports/
+image/
+/video.mp4
+*.mov
+*.webm
+.tools/
