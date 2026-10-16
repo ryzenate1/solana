@@ -1,0 +1,14 @@
+{
+  "framesInspected": [
+    1,
+    96,
+    192
+  ],
+  "observations": [
+    "Partial panel separation at beginning; exploded component view in middle; upright panels at end.",
+    "Baked-in labels contain garbled text.",
+    "Component geometry is visibly distorted in exploded view."
+  ],
+  "conversionAction": "Preserved exactly; no retouching or corrective processing.",
+  "websiteSuitability": "Technically ready for scroll rendering; source requires creative review for premium presentation."
+}
