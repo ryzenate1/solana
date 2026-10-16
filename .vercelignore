@@ -5,3 +5,8 @@ image/
 *.mov
 *.webm
 .tools/
+# Runtime only uses scene-01 frames 001-018 (~21MB). Later frames are retained
+# locally but excluded from deploys to keep builds fast (~270MB total otherwise).
+public/sequences/scene-01/frame_000019.webp
+public/sequences/scene-01/frame_0000[2-9]*
+public/sequences/scene-01/frame_0001*
